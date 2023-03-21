@@ -12,9 +12,7 @@ if SUDO_USERS:
     try:
         sudouser = SUDO_USERS
         print(sudouser)
-        _list = []
-        for x in sudouser:
-            _list.append(int(x))
+        _list = [int(x) for x in sudouser]
         sudos = _list
     except Exception as e:
         sudos = SUDO_USERS
