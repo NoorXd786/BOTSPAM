@@ -14,16 +14,16 @@ from .. import sudos
     filters.user(sudos) & filters.command(["spam", "bigspam"], prefixes=HANDLER)
 )
 async def spam(Legend: Client, e: Message):
-    usage = "Command :- /spam <count> <text>\nExample :- `/spam 5 SpamBot OP`\n\n/bigspam <count> <text>\nExample :- `/bigspam 103 Legend Spam Bot`"
     lol = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 1)
     if len(lol) == 2:
         counts = int(lol[0])
         spam_text = str(lol[1])
         chat = e.chat
         for _ in range(counts):
-            await Legend.send_message(chat.id, str(spam_text))
+            await Legend.send_message(chat.id, spam_text)
             asyncio.sleep(0.3)
     else:
+        usage = "Command :- /spam <count> <text>\nExample :- `/spam 5 SpamBot OP`\n\n/bigspam <count> <text>\nExample :- `/bigspam 103 Legend Spam Bot`"
         await e.reply_text(usage)
         return
     if LOG_CHANNEL:
@@ -40,18 +40,18 @@ async def spam(Legend: Client, e: Message):
     filters.user(sudos) & filters.command(["dspam", "delayspam"], prefixes=HANDLER)
 )
 async def delayspam(Legend: Client, e: Message):
-    usage = "Command :- /dspam <count> <sleeptime> <text>\nExample :- `/dspam 25 8 LegendBot`"
     lol = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
     owo = lol[1:]
-    chat = e.chat
     if len(owo) == 2:
         counts = int(owo[0])
         spam_text = str(owo[1])
         sleeptime = float(owo[0])
+        chat = e.chat
         for _ in range(counts):
-            await Legend.send_message(chat.id, str(spam_text))
+            await Legend.send_message(chat.id, spam_text)
             await asyncio.sleep(sleeptime)
     else:
+        usage = "Command :- /dspam <count> <sleeptime> <text>\nExample :- `/dspam 25 8 LegendBot`"
         await e.reply_text(usage)
         return
     if LOG_CHANNEL:
@@ -68,11 +68,10 @@ async def delayspam(Legend: Client, e: Message):
     filters.user(sudos) & filters.command(["pspam", "pornspam"], prefixes=HANDLER)
 )
 async def pornspam(Legend: Client, e: Message):
-    usage = "Command :- /pspam <count>\n\nExample :- `/pspam 23`"
     lol = e.text.split(" ", 1)[1].split(" ", 1)
     counts = int(lol[0])
-    chat = e.chat
     if counts:
+        chat = e.chat
         for _ in range(counts):
             porn = random.choice(pornlinks)
             if ".jpg" in porn or ".png" in porn:
@@ -82,6 +81,7 @@ async def pornspam(Legend: Client, e: Message):
                 await Legend.send_video(chat.id, porn)
                 await asyncio.sleep(0.4)
     else:
+        usage = "Command :- /pspam <count>\n\nExample :- `/pspam 23`"
         await e.reply_text(usage)
         return
 

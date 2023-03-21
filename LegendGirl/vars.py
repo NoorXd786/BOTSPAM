@@ -2,9 +2,7 @@ import os
 
 from exampleconfig import *
 
-if BOT_TOKEN == "":
-    pass
-else:
+if BOT_TOKEN != "":
     add_values()
 
 

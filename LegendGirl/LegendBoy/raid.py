@@ -12,7 +12,6 @@ from .. import sudos
 
 @Client.on_message(filters.user(sudos) & filters.command(["raid"], prefixes=HANDLER))
 async def raid(Legend: Client, e: Message):
-    usage = "Command: /raid"
     lol = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
     chat = e.chat
     if len(lol) == 2:
@@ -40,6 +39,7 @@ async def raid(Legend: Client, e: Message):
         except:
             user = e.reply_to_message.from_user
     else:
+        usage = "Command: /raid"
         await e.reply_text(usage)
         return
     for _ in range(counts):
@@ -71,7 +71,7 @@ async def replyraid(Legend: Client, e: Message):
     except IndexError:
        lol = None
     if e.reply_to_message and e.reply_to_message.from_user:
-       user = e.reply_to_message.from_user
+        user = e.reply_to_message.from_user
     elif lol:
         user_ = lol[0]
         if user_.isnumeric():
@@ -86,8 +86,6 @@ async def replyraid(Legend: Client, e: Message):
             return
     else:
         await message.reply_text("I don't know who you're talking about, you're going to need to specify a user...!")
-        return 
-        await message.reply_text("I don't know who you're talking about, you're going to need to specify a user.!")
         return
     if int(user.id) in users:
         await e.reply_text("User already in Raid list!")

@@ -8,13 +8,13 @@ from .. import sudos
 
 async def start_cmd(Legend):
     x = await Legend.get_me()
-    START_OP = [
+    return [
         [
             InlineKeyboardButton(
-                text="🥀 Developer 🥀", url=f"https://t.me/LegendBot_Owner"
+                text="🥀 Developer 🥀", url="https://t.me/LegendBot_Owner"
             ),
             InlineKeyboardButton(
-                text="✨ Support ✨", url=f"https://t.me/LegendBot_Group"
+                text="✨ Support ✨", url="https://t.me/LegendBot_Group"
             ),
         ],
         [
@@ -25,14 +25,14 @@ async def start_cmd(Legend):
         ],
         [
             InlineKeyboardButton(
-                text="❄️ Source Code ❄️", url=f"https://github.com/LEGEND-AI/BOTSPAM"
+                text="❄️ Source Code ❄️",
+                url="https://github.com/LEGEND-AI/BOTSPAM",
             ),
             InlineKeyboardButton(
-                text="☁️ Updates ☁️", url=f"https://t.me/LegendBot_Update"
+                text="☁️ Updates ☁️", url="https://t.me/LegendBot_Update"
             ),
         ],
     ]
-    return START_OP
 
 
 @Client.on_message(filters.user(sudos) & filters.command(["start"], prefixes=HANDLER))
